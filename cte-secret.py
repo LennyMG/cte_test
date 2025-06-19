@@ -2,10 +2,10 @@
 import base64
 import yaml
 
-# Define the secret values
+# Define inputs
 secret_data = {
-    'username': 'cte-apprentice',
-    'password': 'SuperSecret123'
+    'username': 'cte-apprentice',       # input 1
+    'password': 'SuperSecret123'        # input 2
 }
 
 # Encode the values using base64
@@ -19,14 +19,14 @@ k8s_secret = {
     'apiVersion': 'v1',
     'kind': 'Secret',
     'metadata': {
-        'name': 'cte-secret'
+        'name': 'cte-secret'                                # secret name
     },
-    'type': 'Opaque',
+    'type': 'Opaque',                                       # Type        
     'data': encoded_data
 }
 
 # Write to YAML file
-with open('cte-secret.yaml', 'w') as f:
+with open('secret.yaml', 'w') as f:                         # Output                
     yaml.dump(k8s_secret, f, default_flow_style=False)
 
-print("cte-secret.yaml created successfully.")
+print("secret.yaml created successfully.")
